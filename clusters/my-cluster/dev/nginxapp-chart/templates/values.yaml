@@ -1,0 +1,12 @@
+appName: nginxapp
+namespace: dev
+replicas: 2
+
+image:
+  name: nginx
+  tag: latest
+
+service:
+  type: NodePort
+  port: 80
+  targetPort: 80

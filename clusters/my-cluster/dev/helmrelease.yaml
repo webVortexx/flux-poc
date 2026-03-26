@@ -1,0 +1,18 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: nginxapp
+  namespace: dev
+spec:
+  interval: 1m
+  chart:
+    spec:
+      chart: ./clusters/my-cluster/dev/nginxapp-chart
+      sourceRef:
+        kind: GitRepository
+        name: flux-system
+        namespace: flux-system
+  values:
+    replicas: 2
+    image:
+      tag: latest
